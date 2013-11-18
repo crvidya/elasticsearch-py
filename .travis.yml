@@ -12,14 +12,6 @@ env:
   - TEST_ES_CONNECTION=RequestsHttpConnection
   - TEST_ES_CONNECTION=ThriftConnection
 
-matrix:
-  exclude:
-    # skip testing thrift on py3 and pypy
-    - python: "pypy"
-      env: TEST_ES_CONNECTION=ThriftConnection
-    - python: "3.3"
-      env: TEST_ES_CONNECTION=ThriftConnection
-
 install:
   - wget -O - https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.5.tar.gz | tar xz -C /tmp
   - /tmp/elasticsearch-0.90.5/bin/plugin -install elasticsearch/elasticsearch-transport-memcached/1.6.0
